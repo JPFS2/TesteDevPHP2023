@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GitHubController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +13,12 @@
 |
 */
 
+Route::get('/api', function () {
+    return view('index');
+});
+
+Route::post('/user', [GitHubController::class, 'getUser']);
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-use Illuminate\Support\Facades\Route;
-
-Route::get('/github-repos', 'GitHubController@getRepos');
