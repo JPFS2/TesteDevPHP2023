@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\ViaCepController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +14,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('via-cep');
 });
 
-use Illuminate\Support\Facades\Route;
-
-Route::get('/github-repos', 'GitHubController@getRepos');
+Route::post('/consultar-cep', [ ViaCepController::class, 'consultarCep']);
+Route::get('/exportar-csv', [ ViaCepController::class, 'exportarCsv']);
